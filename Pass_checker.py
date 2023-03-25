@@ -1,13 +1,15 @@
 import requests
 import hashlib
 import sys
-#changes
+
+
 def api_request(hash_char):
     url = 'https://api.pwnedpasswords.com/range/' + hash_char
     res = requests.get(url)
     if res.status_code != 200:
         raise RuntimeError(f'Response error: {res.status_code} chack API')
     return res.text
+
 
 def pass_check(tail,response,password):
     full_hash = [line.split(":") for line in response.splitlines()]
@@ -25,6 +27,7 @@ def passwd(password):
     response = api_request(first5_char)
     pass_check(tail,response,password)
 
+    
 def main(args):
     for arg in args:
         passwd(arg)
