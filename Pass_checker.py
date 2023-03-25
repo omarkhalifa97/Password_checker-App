@@ -2,7 +2,7 @@ import requests
 import hashlib
 import sys
 
-# calling api request fundction
+# calling api request fundction.
 def api_request(hash_char):
     url = 'https://api.pwnedpasswords.com/range/' + hash_char
     res = requests.get(url)
